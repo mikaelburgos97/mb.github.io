@@ -13,146 +13,30 @@
 <body>
   <div class="container">
     <div class="navigation">
+      <div class="imgBox">
+        <img class="profile-pic" src="./mike-pic.jpg " style="width: 100px; border-radius: 49%; display: flex; flex-direction: column;">  
+      </div>
       <ul>
-        <li><a href="#banner" onclick="toggleMenu()">Home</a></li>
-        <li><a href="#about" onclick="toggleMenu()">About</a></li>
-        <li><a href="#technologies" onclick="toggleMenu()">Tecnologies</a></li>
-        <li><a href="#project" onclick="toggleMenu()">Project</a></li>
-        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        <div>
+          <li><h3 class="logo">Mikael Burgos</h3></li>
+          <span class="following">Following</span>
+          <li>HOME</li>
+        <li>Settings</li>
+        </div>
+        
       </ul>
-
       <div class="themeSwitch"></div>
     </div>
-
     <div class="main">
       <div class="topbar">
-        <a href="#banner  " class="logo">Mikael Burgos</a>
+        <!-- <a href="#banner  " class="logo">Mikael Burgos</a> -->
         <div class="toggle">
           <i class="fa-solid fa-bars"></i>
         </div>
-      </div>
 
-      <!-- banner -->
-      <section class="banner" id="banner">
-        <div class="content">
-          <div class="imgBox">
-            <img class="profile-pic " src="./mike-pic.jpg " >  
-          </div>
-          <h3>Mikael Burgos</h3>
-          <p>Front-end Web Developer</p>
-          <!-- <a href="path_to_file" download="proposed_file_name">Download</a> -->
-          <a href="./mikael-burgos-resume.pdf" download="mikael-burgos-cv" class="btn">Download My CV</a>
-          <ul class="socialMedia">
-            <li><a href="https://www.linkedin.com/in/mikael-burgos-627016130/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
-            <li><a href="https://instagram.com/just_mikaelb?igshid=ZDdkNTZiNTM=" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="https://github.com/mikaelburgos97" target="_blank"><i class="fa-brands fa-github"></i></a></li>
-            <li><a href="https://twitter.com/MikaelBurgos?t=zUdko7aKMvtZAoSZKes3ww&s=09" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- about -->
-      <section class="about adjust" id="about">
-        <div class="title">
-          <h2>About Me</h2>
-        </div>
-        <div class="content">
-          <div class="textBox">
-            <p>Since a very young age, I've been passionate about technology, I just simply love to keep learning about technology and what they can be used for.
-            </p>
-            <br>
-            <p>I have the ability to work in a team, with excellent communication skills and with a problem-solving oriented mindset, I can break down big problems into smaller ones to eventually find a solution to each one of them.  <br>  If I had to describe myself in one word, would be that I'm a fast learner and therefore I can adapt into different work enviroments and also I'm able to learn from any challenge or problem I may have to past or resolve in a high-quality way.</p>
-          </div>
-          <p></p>
-          <div class="imgBox">
-            <img class="second-img" src="./another-mike-pic.jpg" > 
-          </div>
-        </div>
-      </section>
-
-      <section class="technologies adjust" id="technologies">
-        <div class="title">
-          <p>Skills I have</p>
-          <h2>Tecnologies</h2>
-        </div>
-        
-        <div class="tech-container">
-          <ul>
-            <li><i class="all fa-brands fa-square-js"></i>JAVASCRIPT</li>
-            <li><i class="all fa-brands fa-html5"></i>HTML</li>
-            <li><i class="all fa-brands fa-react"></i>REACT</li>
-            <li><i class="all fa-brands fa-react"></i>React Native</li>
-            <li><i class="all fa-solid fa-code"></i>TYPESCRIPT</li>
-            <li><i class="all fa-brands fa-git"></i>GIT</li>
-            <li><i class="all fa-brands fa-css3-alt"></i>CSS</li>
-            <li><i class="all fa-brands fa-bootstrap"></i>Bootstrap</li>
-            <li><i class="all fa-solid fa-code"></i>Tailwind</li>
-            <li><i class="all fa-brands fa-npm"></i>NPM</li>
-          </ul>
-        </div>
-      </section>
-      
-
-      <section class="project adjust" id="project">
-        <div class="title">
-          <h2>Recent Work</h2>  
-          <p>Simple calculator</p>
-          <div>
-            <img src="./simple-calculator.png" style="width: 300px;"/>
-            <div>
-              <div>
-                <a href="https://github.com/mikaelburgos97/interactive-calculator" target="_blank" class="btn btns">Repository</a>
-                <a href="#" class="btn btns">Live Demo</a>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </section>
-
-      <section class="contact adjust">
-        <div class="title padd">
-          <p>Get In Touch</p>
-          <h2>Contact Me</h2>
-        </div>
-
-        <div class="contact-me" id="contact">
-          <div class="contact-info">
-            <i class="fa-solid fa-envelope"></i>
-            <p>mikaelburgos1997@gmail.com</p>
-            <div class="btn">
-              <a class="contact-btn" href="mailto:mikaelburgos1997@gmail.com">Send message</a>
-            </div>
-          </div>
-
-          <div class="contact-info">
-            <i class="fa-brands fa-whatsapp"></i>
-            <p>WhatsApp</p>
-            <div class="btn">
-              <a class="contact-btn" target="_blank" href="https://wa.me/message/2JYTTAXYX5EOL1">Send message</a>
-            </div>
-          </div>
-
-          <div class="contact-info">
-            <i class="fa-solid fa-phone"></i>
-            <p>+1-829-263-7884</p>
-            <div class="btn">
-              <a class="contact-btn" target="_blank" href="https://wa.me/message/2JYTTAXYX5EOL1">Call me</a>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <section class="copyright adjust">
-        <div class="copyright-content">
-          <p>Mikael Burgos All Rights Reserved 2023</p>
-        </div>
-      </section>
-
-      
-    </div>
   </div>
+  
+</div>
   <script src="./index.js"></script>
 </body>
 </html>
