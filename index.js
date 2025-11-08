@@ -793,7 +793,9 @@ function applyTranslations(lang) {
 
   // Update CV download link and alert based on language
   const cvPath = lang === 'es' ? './Mikael Burgos Spa.pdf' : './Mikael Burgos Eng.pdf';
+  const cvFileName = lang === 'es' ? 'Mikael-Burgos-CV-Espanol' : 'Mikael-Burgos-CV-English';
   downloadBtn.href = cvPath;
+  downloadBtn.setAttribute('download', cvFileName);
 
   // Remove previous event listener by cloning the node
   const newDownloadBtn = downloadBtn.cloneNode(true);
