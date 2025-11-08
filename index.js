@@ -595,6 +595,7 @@ const translations = {
     jobTitle: 'CCE Process Strategic Analyst',
     specializations: 'Automation | Software Development | Data Analysis',
     downloadCV: 'Download My CV',
+    downloadAlert: 'Downloading English version based on your language preference',
 
     // About
     aboutTitle: 'About Me',
@@ -640,6 +641,7 @@ const translations = {
     jobTitle: 'Analista Estratégico de Procesos CCE',
     specializations: 'Automatización | Desarrollo de Software | Análisis de Datos',
     downloadCV: 'Descargar mi CV',
+    downloadAlert: 'Descargando versión en español según tu preferencia de idioma',
 
     // About
     aboutTitle: 'Sobre Mí',
@@ -746,7 +748,23 @@ function applyTranslations(lang) {
   // Banner
   document.querySelector('.job-title').textContent = t.jobTitle;
   document.querySelector('.specializations').textContent = t.specializations;
-  document.querySelector('.banner .btn').textContent = t.downloadCV;
+  const downloadBtn = document.querySelector('#downloadCV');
+  downloadBtn.textContent = t.downloadCV;
+
+  // Update CV download link and alert based on language
+  const cvPath = lang === 'es' ? './Mikael Burgos Spa.pdf' : './Mikael Burgos Eng.pdf';
+  downloadBtn.href = cvPath;
+
+  // Remove previous event listener by cloning the node
+  const newDownloadBtn = downloadBtn.cloneNode(true);
+  downloadBtn.parentNode.replaceChild(newDownloadBtn, downloadBtn);
+
+  // Add click event to show alert
+  newDownloadBtn.addEventListener('click', () => {
+    setTimeout(() => {
+      alert(t.downloadAlert);
+    }, 100);
+  });
 
   // About
   document.querySelector('#about .title h2').textContent = t.aboutTitle;
