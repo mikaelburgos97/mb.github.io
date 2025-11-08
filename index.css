@@ -883,11 +883,18 @@ p {
   transform: translateY(-3px);
 }
 
-/* dark mode and light mode switch */
-  .themeSwitch{
+/* Settings toggles container */
+  .settings-toggles {
     position: absolute;
     bottom: 20px;
     left: 40px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  /* Language switch */
+  .langSwitch {
     width: 30px;
     height: 30px;
     background: var(--black);
@@ -897,12 +904,52 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    position: relative;
   }
 
-  .themeSwitch::before{
+  .langSwitch::before {
+    content: 'EN';
+  }
+
+  .langSwitch[data-lang="es"]::before {
+    content: 'ES';
+  }
+
+  .langSwitch::after {
+    content: 'English';
+    position: absolute;
+    left: 40px;
+    font-size: 0.7em;
+    color: var(--black);
+    white-space: nowrap;
+    font-weight: 300;
+    letter-spacing: 1px;
+    pointer-events: none;
+  }
+
+  .langSwitch[data-lang="es"]::after {
+    content: 'Español';
+  }
+
+  /* Dark mode and light mode switch */
+  .themeSwitch {
+    width: 30px;
+    height: 30px;
+    background: var(--black);
+    color: var(--white);
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .themeSwitch::before {
     content: '\f186';
     font-family: fontAwesome;
-
   }
 
   .themeSwitch::after {
@@ -910,16 +957,16 @@ p {
     position: absolute;
     left: 40px;
     font-size: 0.7em;
-    color: var(--black );
+    color: var(--black);
     white-space: nowrap;
-    font-weight: 300px;
+    font-weight: 300;
     letter-spacing: 1px;
     pointer-events: none;
   }
 
   .dark .themeSwitch::before {
     content: '\f185';
-    font-family: fontAwesome ;
+    font-family: fontAwesome;
   }
 
   .dark .themeSwitch::after {
@@ -928,14 +975,6 @@ p {
 
   .title.padd{
     padding-bottom: 10px;
-  }
-
-  .copyright {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
   }
 /* responsive */
 
@@ -974,14 +1013,26 @@ p {
     margin: 0;
   }
 
-  .themeSwitch {
+  .settings-toggles {
     position: static !important;
-    transform: none !important;
-    width: 40px !important;
-    height: 40px !important;
-    z-index: 10001;
+    display: flex !important;
+    gap: 15px !important;
     margin: 15px 0 20px 30px !important;
     align-self: flex-start;
+  }
+
+  .langSwitch {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .langSwitch::after {
+    display: none !important;
+  }
+
+  .themeSwitch {
+    width: 40px !important;
+    height: 40px !important;
   }
 
   .themeSwitch::after {

@@ -577,4 +577,213 @@ window.addEventListener('load', () => {
   initSphere();
   // Check initial visibility
   setTimeout(updateProgressBarVisibility, 100);
+  // Initialize system preferences
+  initializeSystemPreferences();
 });
+
+// ========== LANGUAGE TRANSLATION ==========
+const translations = {
+  en: {
+    // Navigation
+    navHome: 'Home',
+    navAbout: 'About',
+    navSkills: 'Skills',
+    navProject: 'Project',
+    navContact: 'Contact',
+
+    // Banner
+    jobTitle: 'CCE Process Strategic Analyst',
+    specializations: 'Automation | Software Development | Data Analysis',
+    downloadCV: 'Download My CV',
+
+    // About
+    aboutTitle: 'About Me',
+    aboutP1: 'CCE Process Strategic Analyst with 3+ years of experience specializing in automation, software development, and data analysis. I bridge the gap between business processes and technology, creating efficient solutions that drive measurable results.',
+    aboutP2: 'My expertise spans full-stack development with React, TypeScript, and Node.js, complemented by strong skills in Python for automation and data analysis. I\'ve successfully designed and implemented automated workflows using Power Automate, developed scalable applications on Azure, and built data-driven solutions that optimize business processes.',
+    aboutP3: 'What drives me is solving complex problems through technology. I excel at breaking down intricate challenges into manageable solutions, collaborating with cross-functional teams, and continuously adapting to new technologies. Whether it\'s building interactive web applications, automating repetitive processes, or analyzing data for strategic insights, I bring a strategic mindset and technical precision to every project.',
+
+    // Skills
+    skillsTitle: 'Skills',
+    techSkills: 'Tech Skills',
+    softSkills: 'Soft Skills',
+
+    // Project
+    projectTitle: 'Featured Project',
+    projectName: 'Mi Iglesia - Gestión de Miembros',
+    projectDesc: 'Comprehensive cross-platform mobile application for church member management. Features include attendance tracking, member profiles, real-time analytics, event management with calendar integration, push notifications, and drag-and-drop organizational tools. Published on iOS, Android, and Web, serving multiple churches with an intuitive interface powered by modern React Native architecture and Supabase backend.',
+    viewApp: 'View App',
+
+    // Contact
+    contactSubtitle: 'Let\'s Work Together',
+    contactTitle: 'Get In Touch',
+    contactIntro: 'I\'m always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out through any of the channels below.',
+    emailTitle: 'Email',
+    emailDetail: 'mikaelburgos1997@gmail.com',
+    sendEmail: 'Send Email',
+    whatsappTitle: 'WhatsApp',
+    whatsappDetail: 'Message me anytime',
+    sendMessage: 'Send Message',
+    linkedinTitle: 'LinkedIn',
+    linkedinDetail: 'Let\'s connect professionally',
+    viewProfile: 'View Profile',
+    socialTitle: 'Or find me on'
+  },
+  es: {
+    // Navigation
+    navHome: 'Inicio',
+    navAbout: 'Sobre Mí',
+    navSkills: 'Habilidades',
+    navProject: 'Proyecto',
+    navContact: 'Contacto',
+
+    // Banner
+    jobTitle: 'Analista Estratégico de Procesos CCE',
+    specializations: 'Automatización | Desarrollo de Software | Análisis de Datos',
+    downloadCV: 'Descargar mi CV',
+
+    // About
+    aboutTitle: 'Sobre Mí',
+    aboutP1: 'Analista Estratégico de Procesos CCE con más de 3 años de experiencia especializado en automatización, desarrollo de software y análisis de datos. Conecto procesos de negocio con tecnología, creando soluciones eficientes que generan resultados medibles.',
+    aboutP2: 'Mi experiencia abarca desarrollo full-stack con React, TypeScript y Node.js, complementado con sólidas habilidades en Python para automatización y análisis de datos. He diseñado e implementado exitosamente flujos de trabajo automatizados usando Power Automate, desarrollado aplicaciones escalables en Azure y construido soluciones basadas en datos que optimizan procesos de negocio.',
+    aboutP3: 'Lo que me impulsa es resolver problemas complejos a través de la tecnología. Destaco en descomponer desafíos intrincados en soluciones manejables, colaborar con equipos multifuncionales y adaptarme continuamente a nuevas tecnologías. Ya sea construyendo aplicaciones web interactivas, automatizando procesos repetitivos o analizando datos para obtener insights estratégicos, aporto una mentalidad estratégica y precisión técnica a cada proyecto.',
+
+    // Skills
+    skillsTitle: 'Habilidades',
+    techSkills: 'Habilidades Técnicas',
+    softSkills: 'Habilidades Blandas',
+
+    // Project
+    projectTitle: 'Proyecto Destacado',
+    projectName: 'Mi Iglesia - Gestión de Miembros',
+    projectDesc: 'Aplicación móvil multiplataforma integral para gestión de miembros de iglesia. Las características incluyen seguimiento de asistencia, perfiles de miembros, análisis en tiempo real, gestión de eventos con integración de calendario, notificaciones push y herramientas organizacionales de arrastrar y soltar. Publicada en iOS, Android y Web, sirviendo a múltiples iglesias con una interfaz intuitiva impulsada por arquitectura moderna React Native y backend Supabase.',
+    viewApp: 'Ver App',
+
+    // Contact
+    contactSubtitle: 'Trabajemos Juntos',
+    contactTitle: 'Ponte en Contacto',
+    contactIntro: 'Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tu visión. No dudes en contactarme a través de cualquiera de los canales a continuación.',
+    emailTitle: 'Correo',
+    emailDetail: 'mikaelburgos1997@gmail.com',
+    sendEmail: 'Enviar Correo',
+    whatsappTitle: 'WhatsApp',
+    whatsappDetail: 'Escríbeme cuando quieras',
+    sendMessage: 'Enviar Mensaje',
+    linkedinTitle: 'LinkedIn',
+    linkedinDetail: 'Conectemos profesionalmente',
+    viewProfile: 'Ver Perfil',
+    socialTitle: 'O encuéntrame en'
+  }
+};
+
+// Detect system preferences
+function initializeSystemPreferences() {
+  const langSwitch = document.querySelector('.langSwitch');
+
+  // Detect and apply system theme preference
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    const savedTheme = localStorage.getItem('theme');
+    if (!savedTheme) {
+      body.classList.add('dark');
+    }
+  }
+
+  // Detect and apply system language preference
+  const savedLang = localStorage.getItem('language');
+  let userLang = savedLang;
+
+  if (!savedLang) {
+    // Detect browser language
+    const browserLang = navigator.language || navigator.userLanguage;
+    userLang = browserLang.startsWith('es') ? 'es' : 'en';
+  }
+
+  // Apply language
+  langSwitch.setAttribute('data-lang', userLang);
+  applyTranslations(userLang);
+
+  // Listen for system theme changes
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          body.classList.add('dark');
+        } else {
+          body.classList.remove('dark');
+        }
+      }
+    });
+  }
+}
+
+// Language switch functionality
+const langSwitch = document.querySelector('.langSwitch');
+
+langSwitch.onclick = function() {
+  const currentLang = langSwitch.getAttribute('data-lang') || 'en';
+  const newLang = currentLang === 'en' ? 'es' : 'en';
+
+  langSwitch.setAttribute('data-lang', newLang);
+  localStorage.setItem('language', newLang);
+  applyTranslations(newLang);
+}
+
+// Update theme switch to save preference
+const originalThemeSwitch = themeSwitch.onclick;
+themeSwitch.onclick = function() {
+  body.classList.toggle('dark');
+  localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
+}
+
+function applyTranslations(lang) {
+  const t = translations[lang];
+
+  // Navigation
+  document.querySelectorAll('.navigation ul li a').forEach((link, index) => {
+    const keys = ['navHome', 'navAbout', 'navSkills', 'navProject', 'navContact'];
+    if (keys[index]) link.textContent = t[keys[index]];
+  });
+
+  // Banner
+  document.querySelector('.job-title').textContent = t.jobTitle;
+  document.querySelector('.specializations').textContent = t.specializations;
+  document.querySelector('.banner .btn').textContent = t.downloadCV;
+
+  // About
+  document.querySelector('#about .title h2').textContent = t.aboutTitle;
+  const aboutPs = document.querySelectorAll('#about .textBox p');
+  aboutPs[0].textContent = t.aboutP1;
+  aboutPs[1].textContent = t.aboutP2;
+  aboutPs[2].textContent = t.aboutP3;
+
+  // Skills
+  document.querySelector('#skills .title h2').textContent = t.skillsTitle;
+  const categoryTitles = document.querySelectorAll('.category-title');
+  categoryTitles[0].textContent = t.techSkills;
+  categoryTitles[1].textContent = t.softSkills;
+
+  // Project
+  document.querySelector('#project .title h2').textContent = t.projectTitle;
+  document.querySelector('.project-title').textContent = t.projectName;
+  document.querySelector('.project-description').textContent = t.projectDesc;
+  document.querySelectorAll('.project-btn')[0].innerHTML = `<i class="fa-solid fa-mobile-screen-button"></i> ${t.viewApp}`;
+
+  // Contact
+  document.querySelector('#contact .title p').textContent = t.contactSubtitle;
+  document.querySelector('#contact .title h2').textContent = t.contactTitle;
+  document.querySelector('.contact-intro p').textContent = t.contactIntro;
+
+  const contactCards = document.querySelectorAll('.contact-card');
+  contactCards[0].querySelector('h3').textContent = t.emailTitle;
+  contactCards[0].querySelector('.contact-detail').textContent = t.emailDetail;
+  contactCards[0].querySelector('.contact-link').innerHTML = `${t.sendEmail} <i class="fa-solid fa-arrow-right"></i>`;
+
+  contactCards[1].querySelector('h3').textContent = t.whatsappTitle;
+  contactCards[1].querySelector('.contact-detail').textContent = t.whatsappDetail;
+  contactCards[1].querySelector('.contact-link').innerHTML = `${t.sendMessage} <i class="fa-solid fa-arrow-right"></i>`;
+
+  contactCards[2].querySelector('h3').textContent = t.linkedinTitle;
+  contactCards[2].querySelector('.contact-detail').textContent = t.linkedinDetail;
+  contactCards[2].querySelector('.contact-link').innerHTML = `${t.viewProfile} <i class="fa-solid fa-arrow-right"></i>`;
+
+  document.querySelector('.social-title').textContent = t.socialTitle;
+}
