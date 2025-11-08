@@ -889,7 +889,7 @@ p {
     bottom: 20px;
     left: 40px;
     display: flex;
-    gap: 15px;
+    gap: 100px;
     align-items: center;
   }
 
