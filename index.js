@@ -1,3 +1,44 @@
+// ========== CIRCULAR FAVICON GENERATOR ==========
+function generateCircularFavicon() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 64;
+  canvas.height = 64;
+  const ctx = canvas.getContext('2d');
+
+  const img = new Image();
+  img.onload = function() {
+    // Draw yellow circle background
+    ctx.beginPath();
+    ctx.arc(32, 32, 32, 0, Math.PI * 2);
+    ctx.fillStyle = '#FFD700';
+    ctx.fill();
+
+    // Create circular clipping path
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(32, 32, 28, 0, Math.PI * 2);
+    ctx.clip();
+
+    // Draw profile image
+    ctx.drawImage(img, 0, 0, 64, 64);
+    ctx.restore();
+
+    // Draw blue border
+    ctx.beginPath();
+    ctx.arc(32, 32, 30, 0, Math.PI * 2);
+    ctx.strokeStyle = '#4a9eff';
+    ctx.lineWidth = 4;
+    ctx.stroke();
+
+    // Set as favicon
+    const favicon = document.getElementById('favicon');
+    favicon.href = canvas.toDataURL('image/png');
+  };
+  img.src = './mike-pic.jpg';
+}
+
+// Generate favicon immediately
+generateCircularFavicon();
 
 let toggle = document.querySelector('.toggle')
 let topbar = document.querySelector('.topbar')
