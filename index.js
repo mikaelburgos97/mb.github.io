@@ -5,12 +5,15 @@ let navigation = document.querySelector('.navigation')
 let themeSwitch = document.querySelector('.themeSwitch')
 let body = document.querySelector('body')
 let main = document.querySelector('.main')
+let scrollProgressContainer = document.querySelector('.scroll-progress-container')
+let scrollProgressBar = document.querySelector('.scroll-progress-bar')
 
 toggle.onclick = function(){
   toggle.classList.toggle('active')
   topbar.classList.toggle('active')
   navigation.classList.toggle('active')
   main.classList.toggle('active')
+  scrollProgressContainer.classList.toggle('active')
 
   // Resize Three.js canvas after menu toggle
   setTimeout(() => {
@@ -39,42 +42,34 @@ function toggleMenu(){
 
 // ========== THREE.JS SPHERE ==========
 const technologies = [
-  { name: 'Git', icon: 'fa-brands fa-git-alt', color: '#F05032' },
-  { name: 'GitHub', icon: 'fa-brands fa-github', color: '#181717' },
-  { name: 'Azure', icon: 'fa-brands fa-microsoft', color: '#0078D4' },
-  { name: 'React', icon: 'fa-brands fa-react', color: '#61DAFB' },
-  { name: 'JavaScript', icon: 'fa-brands fa-js', color: '#F7DF1E' },
-  { name: 'CSS', icon: 'fa-brands fa-css3-alt', color: '#1572B6' },
-  { name: 'HTML5', icon: 'fa-brands fa-html5', color: '#E34F26' },
-  { name: 'Python', icon: 'fa-brands fa-python', color: '#3776AB' },
-  { name: 'Salesforce', icon: 'fa-brands fa-salesforce', color: '#00A1E0' },
-  { name: 'Bootstrap', icon: 'fa-brands fa-bootstrap', color: '#7952B3' },
-  { name: 'Java', icon: 'fa-brands fa-java', color: '#007396' },
-  { name: 'Firebase', icon: 'fa-solid fa-fire', color: '#FFCA28' },
-  { name: 'Google Cloud', icon: 'fa-brands fa-google', color: '#4285F4' },
-  { name: 'MongoDB', icon: 'fa-solid fa-database', color: '#47A248' },
-  { name: 'Node.js', icon: 'fa-brands fa-node-js', color: '#339933' },
-  { name: 'NPM', icon: 'fa-brands fa-npm', color: '#CB3837' },
-  { name: 'Docker', icon: 'fa-brands fa-docker', color: '#2496ED' },
-  { name: 'AWS', icon: 'fa-brands fa-aws', color: '#FF9900' },
-  { name: 'SQL', icon: 'fa-solid fa-database', color: '#4479A1' },
-  { name: 'PostgreSQL', icon: 'fa-solid fa-database', color: '#336791' },
-  { name: 'SharePoint', icon: 'fa-brands fa-microsoft', color: '#0078D4' },
-  { name: 'Excel', icon: 'fa-solid fa-file-excel', color: '#217346' },
-  { name: 'TypeScript', icon: 'fa-solid fa-code', color: '#3178C6' },
-  { name: 'Next.js', icon: 'fa-solid fa-n', color: '#000000' },
-  { name: 'Tailwind', icon: 'fa-solid fa-wind', color: '#06B6D4' },
-  { name: 'Selenium', icon: 'fa-solid fa-robot', color: '#43B02A' },
-  { name: 'jQuery', icon: 'fa-solid fa-code', color: '#0769AD' },
-  { name: 'C# ASP.NET', icon: 'fa-solid fa-code', color: '#512BD4' },
-  { name: 'Supabase', icon: 'fa-solid fa-database', color: '#3ECF8E' },
-  { name: 'Oracle', icon: 'fa-solid fa-database', color: '#F80000' },
-  { name: 'Google Maps', icon: 'fa-solid fa-map-location-dot', color: '#4285F4' },
-  { name: 'Power Automate', icon: 'fa-solid fa-bolt', color: '#0066FF' },
-  { name: 'Expo', icon: 'fa-brands fa-react', color: '#000020' },
-  { name: 'Redux', icon: 'fa-solid fa-atom', color: '#764ABC' },
-  { name: 'Three.js', icon: 'fa-solid fa-cube', color: '#000000' },
-  { name: 'Chart.js', icon: 'fa-solid fa-chart-line', color: '#FF6384' }
+  { name: 'JavaScript', icon: 'devicon-javascript-plain', color: '#F7DF1E' },
+  { name: 'TypeScript', icon: 'devicon-typescript-plain', color: '#3178C6' },
+  { name: 'React', icon: 'devicon-react-original', color: '#61DAFB' },
+  { name: 'Next.js', icon: 'devicon-nextjs-original', color: '#000000' },
+  { name: 'HTML5', icon: 'devicon-html5-plain', color: '#E34F26' },
+  { name: 'CSS3', icon: 'devicon-css3-plain', color: '#1572B6' },
+  { name: 'Tailwind', icon: 'devicon-tailwindcss-plain', color: '#06B6D4' },
+  { name: 'Bootstrap', icon: 'devicon-bootstrap-plain', color: '#7952B3' },
+  { name: 'Python', icon: 'devicon-python-plain', color: '#3776AB' },
+  { name: 'Java', icon: 'devicon-java-plain', color: '#007396' },
+  { name: 'C#', icon: 'devicon-csharp-plain', color: '#239120' },
+  { name: 'Node.js', icon: 'devicon-nodejs-plain', color: '#5FA04E' },
+  { name: 'Git', icon: 'devicon-git-plain', color: '#F05032' },
+  { name: 'GitHub', icon: 'devicon-github-original', color: '#181717' },
+  { name: 'MongoDB', icon: 'devicon-mongodb-plain', color: '#47A248' },
+  { name: 'PostgreSQL', icon: 'devicon-postgresql-plain', color: '#4169E1' },
+  { name: 'MySQL', icon: 'devicon-mysql-plain', color: '#4479A1' },
+  { name: 'Oracle', icon: 'devicon-oracle-original', color: '#F80000' },
+  { name: 'Firebase', icon: 'devicon-firebase-plain', color: '#DD2C00' },
+  { name: 'Docker', icon: 'devicon-docker-plain', color: '#2496ED' },
+  { name: 'Azure', icon: 'devicon-azure-plain', color: '#0078D4' },
+  { name: 'Google Cloud', icon: 'devicon-googlecloud-plain', color: '#4285F4' },
+  { name: 'AWS', icon: 'devicon-amazonwebservices-plain-wordmark', color: '#FF9900' },
+  { name: 'Salesforce', icon: 'devicon-salesforce-plain', color: '#00A1E0' },
+  { name: 'NPM', icon: 'devicon-npm-original-wordmark', color: '#CB3837' },
+  { name: 'Three.js', icon: 'devicon-threejs-original', color: '#000000' },
+  { name: 'Selenium', icon: 'devicon-selenium-original', color: '#43B02A' },
+  { name: 'jQuery', icon: 'devicon-jquery-plain', color: '#0769AD' }
 ];
 
 let scene, camera, renderer, techObjects = [], lines = [];
@@ -82,6 +77,10 @@ let mouse = { x: 0, y: 0 };
 let isDragging = false;
 let previousMousePosition = { x: 0, y: 0 };
 let rotation = { x: 0, y: 0 };
+let targetRotation = { x: 0, y: 0 };
+let scrollAccumulator = 0;
+let maxScroll = 2000; // Maximum scroll before transitioning
+let isTransitioning = false;
 
 function initSphere() {
   const canvas = document.getElementById('sphereCanvas');
@@ -90,15 +89,18 @@ function initSphere() {
   // Setup scene
   scene = new THREE.Scene();
 
-  // Setup camera
+  // Setup camera with responsive positioning
+  const isMobile = window.innerWidth <= 992;
   camera = new THREE.PerspectiveCamera(
     75,
     banner.offsetWidth / banner.offsetHeight,
     0.1,
     1000
   );
-  camera.position.set(0, 3, 22); // Center camera on profile photo position
-  camera.lookAt(0, 3, 0); // Look at the profile photo center
+  // Adjust camera distance based on device
+  const cameraZ = isMobile ? 18 : 22;
+  camera.position.set(0, 3, cameraZ);
+  camera.lookAt(0, 3, 0);
 
   // Setup renderer
   renderer = new THREE.WebGLRenderer({
@@ -158,12 +160,13 @@ function initSphere() {
   });
   const profileSprite = new THREE.Sprite(profileMaterial);
   profileSprite.position.set(0, 3, 0);
-  profileSprite.scale.set(5, 5, 1);
+  const profileScale = isMobile ? 4 : 5;
+  profileSprite.scale.set(profileScale, profileScale, 1);
   profileSprite.renderOrder = 10; // Render on top of lines
   scene.add(profileSprite);
 
-  // Create technology icons
-  const radius = 15;
+  // Create technology icons with responsive radius
+  const radius = isMobile ? 10 : 12;
   technologies.forEach((tech, index) => {
     // Distribute technologies evenly on sphere surface
     const phi = Math.acos(-1 + (2 * index) / technologies.length);
@@ -173,7 +176,7 @@ function initSphere() {
     const y = radius * Math.sin(theta) * Math.sin(phi);
     const z = radius * Math.cos(phi);
 
-    // Create icon sprite using Font Awesome
+    // Create icon sprite using Devicon
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
     canvas.width = 180;
@@ -188,23 +191,36 @@ function initSphere() {
     context.lineWidth = 5;
     context.stroke();
 
-    // Draw Font Awesome icon
-    context.fillStyle = tech.color;
-    context.font = '900 45px "Font Awesome 6 Free", "Font Awesome 6 Brands"';
-    context.textAlign = 'center';
-    context.textBaseline = 'middle';
+    // Create temporary element to get Devicon character
+    const tempIcon = document.createElement('i');
+    tempIcon.className = tech.icon;
+    tempIcon.style.position = 'absolute';
+    tempIcon.style.left = '-9999px';
+    document.body.appendChild(tempIcon);
 
-    // Get the icon character from Font Awesome
-    const iconChar = getIconChar(tech.icon);
-    context.fillText(iconChar, 90, 90);
+    // Get the character from the pseudo-element
+    setTimeout(() => {
+      const iconChar = window.getComputedStyle(tempIcon, ':before').content.replace(/['"]/g, '');
+      document.body.removeChild(tempIcon);
 
-    // Add tech name below with better visibility
-    context.fillStyle = '#fff';
-    context.font = 'Bold 16px Arial';
-    context.strokeStyle = '#000';
-    context.lineWidth = 3;
-    context.strokeText(tech.name, 90, 155);
-    context.fillText(tech.name, 90, 155);
+      // Draw Devicon icon
+      context.fillStyle = tech.color;
+      context.font = '50px "devicon"';
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.fillText(iconChar, 90, 90);
+
+      // Add tech name below with better visibility
+      context.fillStyle = '#fff';
+      context.font = 'Bold 16px Arial';
+      context.strokeStyle = '#000';
+      context.lineWidth = 3;
+      context.strokeText(tech.name, 90, 155);
+      context.fillText(tech.name, 90, 155);
+
+      // Update texture
+      texture.needsUpdate = true;
+    }, 100);
 
     const texture = new THREE.CanvasTexture(canvas);
     const spriteMaterial = new THREE.SpriteMaterial({
@@ -215,12 +231,13 @@ function initSphere() {
     });
     const sprite = new THREE.Sprite(spriteMaterial);
     sprite.position.set(x, y, z);
-    sprite.scale.set(2, 2, 1);
+    const iconScale = isMobile ? 1.6 : 2;
+    sprite.scale.set(iconScale, iconScale, 1);
     sprite.renderOrder = 5; // Render on top of lines but below profile
     sprite.userData = {
       name: tech.name,
       color: tech.color,
-      originalScale: { x: 2, y: 2, z: 1 },
+      originalScale: { x: iconScale, y: iconScale, z: 1 },
       originalPosition: { x, y, z }
     };
 
@@ -251,45 +268,6 @@ function initSphere() {
     lines.push({ line, tech, originalPositions: linePositions });
   });
 
-  // Helper function to get icon character
-  function getIconChar(iconClass) {
-    // Map of Font Awesome classes to Unicode characters
-    const iconMap = {
-      'fa-git-alt': '\uf841',
-      'fa-github': '\uf09b',
-      'fa-microsoft': '\uf3ca',
-      'fa-react': '\uf41b',
-      'fa-js': '\uf3b8',
-      'fa-css3-alt': '\uf38b',
-      'fa-html5': '\uf13b',
-      'fa-python': '\uf3e2',
-      'fa-salesforce': '\uf83b',
-      'fa-bootstrap': '\uf836',
-      'fa-java': '\uf4e4',
-      'fa-fire': '\uf06d',
-      'fa-google': '\uf1a0',
-      'fa-database': '\uf1c0',
-      'fa-node-js': '\uf3d3',
-      'fa-npm': '\uf3d4',
-      'fa-docker': '\uf395',
-      'fa-aws': '\uf375',
-      'fa-code': '\uf121',
-      'fa-n': 'N',
-      'fa-wind': '\uf72e',
-      'fa-robot': '\uf544',
-      'fa-file-excel': '\uf1c3',
-      'fa-map-location-dot': '\uf5a0',
-      'fa-bolt': '\uf0e7',
-      'fa-atom': '\uf5d2',
-      'fa-cube': '\uf1b2',
-      'fa-chart-line': '\uf201'
-    };
-
-    // Extract the icon name from the class
-    const iconName = iconClass.split(' ').pop();
-    return iconMap[iconName] || '●';
-  }
-
   // Animation loop
   animate();
 
@@ -300,9 +278,15 @@ function initSphere() {
 function animate() {
   requestAnimationFrame(animate);
 
-  // Auto-rotate (very slow, barely noticeable)
-  if (!isDragging) {
+  // Auto-rotate (very slow, barely noticeable) - only when not dragging or scrolling
+  if (!isDragging && scrollAccumulator === 0) {
     rotation.y += 0.0001;
+    targetRotation.y = rotation.y;
+    targetRotation.x = rotation.x;
+  } else if (!isDragging) {
+    // Smooth interpolation to target rotation
+    rotation.x += (targetRotation.x - rotation.x) * 0.1;
+    rotation.y += (targetRotation.y - rotation.y) * 0.1;
   }
 
   // Apply rotation to icons
@@ -344,7 +328,11 @@ function animate() {
 
 function onWindowResize() {
   const banner = document.querySelector('.banner');
+  const isMobileNow = window.innerWidth <= 992;
+  const cameraZ = isMobileNow ? 18 : 22;
+
   camera.aspect = banner.offsetWidth / banner.offsetHeight;
+  camera.position.z = cameraZ;
   camera.updateProjectionMatrix();
   renderer.setSize(banner.offsetWidth, banner.offsetHeight);
 }
@@ -365,6 +353,8 @@ canvas.addEventListener('mousemove', (e) => {
 
     rotation.y += deltaX * 0.003;
     rotation.x += deltaY * 0.003;
+    targetRotation.y = rotation.y;
+    targetRotation.x = rotation.x;
 
     previousMousePosition = { x: e.clientX, y: e.clientY };
   } else {
@@ -405,6 +395,34 @@ canvas.addEventListener('mouseleave', () => {
   canvas.style.cursor = 'grab';
 });
 
+// Touch events for mobile
+canvas.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  const touch = e.touches[0];
+  previousMousePosition = { x: touch.clientX, y: touch.clientY };
+  e.preventDefault();
+}, { passive: false });
+
+canvas.addEventListener('touchmove', (e) => {
+  if (isDragging) {
+    const touch = e.touches[0];
+    const deltaX = touch.clientX - previousMousePosition.x;
+    const deltaY = touch.clientY - previousMousePosition.y;
+
+    rotation.y += deltaX * 0.003;
+    rotation.x += deltaY * 0.003;
+    targetRotation.y = rotation.y;
+    targetRotation.x = rotation.x;
+
+    previousMousePosition = { x: touch.clientX, y: touch.clientY };
+  }
+  e.preventDefault();
+}, { passive: false });
+
+canvas.addEventListener('touchend', () => {
+  isDragging = false;
+});
+
 // Click detection on technologies
 canvas.addEventListener('click', (e) => {
   const rect = canvas.getBoundingClientRect();
@@ -443,5 +461,80 @@ canvas.addEventListener('click', (e) => {
   }
 });
 
+// Scroll handler for sphere rotation and section transition
+window.addEventListener('wheel', (e) => {
+  const banner = document.querySelector('.banner');
+  const bannerRect = banner.getBoundingClientRect();
+
+  // Only handle scroll when banner is visible and not transitioning
+  if (bannerRect.top <= 0 && bannerRect.bottom > window.innerHeight / 2 && !isTransitioning) {
+    e.preventDefault();
+
+    // Accumulate scroll
+    scrollAccumulator += e.deltaY;
+
+    // Clamp scroll accumulator
+    scrollAccumulator = Math.max(0, Math.min(scrollAccumulator, maxScroll));
+
+    // Update target rotation based on scroll
+    targetRotation.y = scrollAccumulator * 0.002;
+    targetRotation.x = scrollAccumulator * 0.001;
+
+    // Update progress bar
+    const progress = (scrollAccumulator / maxScroll) * 100;
+    scrollProgressBar.style.width = `${progress}%`;
+
+    // Transition to next section when reaching max scroll
+    if (scrollAccumulator >= maxScroll && !isTransitioning) {
+      isTransitioning = true;
+      const aboutSection = document.querySelector('#about');
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+
+      // Reset after transition
+      setTimeout(() => {
+        scrollAccumulator = 0;
+        scrollProgressBar.style.width = '0%';
+        isTransitioning = false;
+        targetRotation.x = 0;
+        targetRotation.y = 0;
+        rotation.x = 0;
+        rotation.y = 0;
+      }, 1000);
+    }
+  }
+}, { passive: false });
+
+// Function to update progress bar visibility
+function updateProgressBarVisibility() {
+  const banner = document.querySelector('.banner');
+  const bannerRect = banner.getBoundingClientRect();
+
+  // Show/hide progress bar based on banner visibility
+  if (bannerRect.top <= 0 && bannerRect.bottom > 0) {
+    scrollProgressContainer.classList.add('visible');
+  } else {
+    scrollProgressContainer.classList.remove('visible');
+  }
+
+  // Reset completely if we've scrolled back to top
+  if (bannerRect.top >= -100 && scrollAccumulator > 0) {
+    scrollAccumulator = 0;
+    scrollProgressBar.style.width = '0%';
+    isTransitioning = false;
+    // Reset rotations to initial state
+    targetRotation.x = 0;
+    targetRotation.y = 0;
+    rotation.x = 0;
+    rotation.y = 0;
+  }
+}
+
+// Reset scroll accumulator when scrolling back to top
+window.addEventListener('scroll', updateProgressBarVisibility);
+
 // Initialize when page loads
-window.addEventListener('load', initSphere);
+window.addEventListener('load', () => {
+  initSphere();
+  // Check initial visibility
+  setTimeout(updateProgressBarVisibility, 100);
+});

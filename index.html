@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
   integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link rel="stylesheet" href="./index.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <title>Mikael Burgos</title>
@@ -17,7 +18,7 @@
       <ul>
         <li><a href="#banner" onclick="toggleMenu()">Home</a></li>
         <li><a href="#about" onclick="toggleMenu()">About</a></li>
-        <li><a href="#technologies" onclick="toggleMenu()">Tecnologies</a></li>
+        <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
         <li><a href="#project" onclick="toggleMenu()">Project</a></li>
         <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
       </ul>
@@ -27,10 +28,18 @@
 
     <div class="main">
       <div class="topbar">
-        <a href="#banner  " class="logo">Mikael Burgos</a>
+        <div class="logo-container">
+          <a href="#banner  " class="logo">Mikael Burgos</a>
+          <p class="logo-subtitle">Automation | Software Development | Data Analysis</p>
+        </div>
         <div class="toggle">
           <i class="fa-solid fa-bars"></i>
         </div>
+      </div>
+
+      <!-- Scroll Progress Bar -->
+      <div class="scroll-progress-container">
+        <div class="scroll-progress-bar"></div>
       </div>
 
       <!-- banner -->
@@ -62,10 +71,11 @@
         </div>
         <div class="content">
           <div class="textBox">
-            <p>Since a very young age, I've been passionate about technology, I just simply love to keep learning about technology and what they can be used for.
-            </p>
+            <p>CCE Process Strategic Analyst with 3+ years of experience specializing in automation, software development, and data analysis. I bridge the gap between business processes and technology, creating efficient solutions that drive measurable results.</p>
             <br>
-            <p>I have the ability to work in a team, with excellent communication skills and with a problem-solving oriented mindset, I can break down big problems into smaller ones to eventually find a solution to each one of them.  <br>  If I had to describe myself in one word, would be that I'm a fast learner and therefore I can adapt into different work enviroments and also I'm able to learn from any challenge or problem I may have to past or resolve in a high-quality way.</p>
+            <p>My expertise spans full-stack development with React, TypeScript, and Node.js, complemented by strong skills in Python for automation and data analysis. I've successfully designed and implemented automated workflows using Power Automate, developed scalable applications on Azure, and built data-driven solutions that optimize business processes.</p>
+            <br>
+            <p>What drives me is solving complex problems through technology. I excel at breaking down intricate challenges into manageable solutions, collaborating with cross-functional teams, and continuously adapting to new technologies. Whether it's building interactive web applications, automating repetitive processes, or analyzing data for strategic insights, I bring a strategic mindset and technical precision to every project.</p>
           </div>
           <p></p>
           <div class="imgBox">
@@ -74,76 +84,171 @@
         </div>
       </section>
 
-      <section class="technologies adjust" id="technologies">
+      <section class="skills adjust" id="skills">
         <div class="title">
-          <p>Skills I have</p>
-          <h2>Tecnologies</h2>
+          <h2>Skills</h2>
         </div>
-        
-        <div class="tech-container">
-          <ul>
-            <li><i class="all fa-brands fa-square-js"></i>JAVASCRIPT</li>
-            <li><i class="all fa-brands fa-html5"></i>HTML</li>
-            <li><i class="all fa-brands fa-react"></i>REACT</li>
-            <li><i class="all fa-brands fa-react"></i>React Native</li>
-            <li><i class="all fa-solid fa-code"></i>TYPESCRIPT</li>
-            <li><i class="all fa-brands fa-git"></i>GIT</li>
-            <li><i class="all fa-brands fa-css3-alt"></i>CSS</li>
-            <li><i class="all fa-brands fa-bootstrap"></i>Bootstrap</li>
-            <li><i class="all fa-solid fa-code"></i>Tailwind</li>
-            <li><i class="all fa-brands fa-npm"></i>NPM</li>
-          </ul>
+
+        <div class="skills-wrapper">
+          <div class="skills-category">
+            <h3 class="category-title">Tech Skills</h3>
+            <div class="tech-container">
+              <ul>
+                <li><i class="devicon-javascript-plain colored"></i>JavaScript</li>
+                <li><i class="devicon-typescript-plain colored"></i>TypeScript</li>
+                <li><i class="devicon-react-original colored"></i>React</li>
+                <li><i class="devicon-react-original colored"></i>React Native</li>
+                <li><i class="devicon-nextjs-original"></i>Next.js</li>
+                <li><i class="devicon-html5-plain colored"></i>HTML5</li>
+                <li><i class="devicon-css3-plain colored"></i>CSS3</li>
+                <li><i class="devicon-tailwindcss-plain colored"></i>Tailwind CSS</li>
+                <li><i class="devicon-bootstrap-plain colored"></i>Bootstrap</li>
+                <li><i class="devicon-python-plain colored"></i>Python</li>
+                <li><i class="devicon-java-plain colored"></i>Java</li>
+                <li><i class="devicon-csharp-plain colored"></i>C# ASP.NET</li>
+                <li><i class="devicon-nodejs-plain colored"></i>Node.js</li>
+                <li><i class="devicon-git-plain colored"></i>Git</li>
+                <li><i class="devicon-github-original"></i>GitHub</li>
+                <li><i class="devicon-mongodb-plain colored"></i>MongoDB</li>
+                <li><i class="devicon-postgresql-plain colored"></i>PostgreSQL</li>
+                <li><i class="devicon-mysql-plain colored"></i>MySQL</li>
+                <li><i class="devicon-oracle-original colored"></i>Oracle</li>
+                <li><i class="devicon-firebase-plain colored"></i>Firebase</li>
+                <li><i class="devicon-docker-plain colored"></i>Docker</li>
+                <li><i class="devicon-azure-plain colored"></i>Azure</li>
+                <li><i class="devicon-googlecloud-plain colored"></i>Google Cloud</li>
+                <li><i class="devicon-amazonwebservices-plain-wordmark colored"></i>AWS</li>
+                <li><i class="devicon-salesforce-plain colored"></i>Salesforce</li>
+                <li><i class="devicon-npm-original-wordmark colored"></i>NPM</li>
+                <li><i class="devicon-threejs-original"></i>Three.js</li>
+                <li><i class="devicon-selenium-original colored"></i>Selenium</li>
+                <li><i class="devicon-jquery-plain colored"></i>jQuery</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h3 class="category-title">Soft Skills</h3>
+            <div class="tech-container">
+              <ul>
+                <li><i class="fa-solid fa-users colored"></i>Teamwork</li>
+                <li><i class="fa-solid fa-comments colored"></i>Communication</li>
+                <li><i class="fa-solid fa-lightbulb colored"></i>Problem Solving</li>
+                <li><i class="fa-solid fa-brain colored"></i>Critical Thinking</li>
+                <li><i class="fa-solid fa-clock colored"></i>Time Management</li>
+                <li><i class="fa-solid fa-rocket colored"></i>Adaptability</li>
+                <li><i class="fa-solid fa-handshake colored"></i>Leadership</li>
+                <li><i class="fa-solid fa-book-open colored"></i>Fast Learner</li>
+                <li><i class="fa-solid fa-eye colored"></i>Attention to Detail</li>
+                <li><i class="fa-solid fa-chart-line colored"></i>Analytical Skills</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
       
 
-      <section class="project adjust" id="project">
+      <section class="projects adjust" id="project">
         <div class="title">
-          <h2>Recent Work</h2>  
-          <p>Simple calculator</p>
-          <div>
-            <img src="./simple-calculator.png" style="width: 300px;"/>
-            <div>
-              <div>
-                <a href="https://github.com/mikaelburgos97/interactive-calculator" target="_blank" class="btn btns">Repository</a>
-                <a href="#" class="btn btns">Live Demo</a>
-              </div>
+          <h2>Featured Project</h2>
+        </div>
+
+        <div class="project-card">
+          <div class="project-content">
+            <h3 class="project-title">Mi Iglesia - Gestión de Miembros</h3>
+            <p class="project-description">
+              Comprehensive cross-platform mobile application for church member management. Features include attendance tracking,
+              member profiles, real-time analytics, event management with calendar integration, push notifications,
+              and drag-and-drop organizational tools. Published on iOS, Android, and Web, serving multiple churches with an intuitive
+              interface powered by modern React Native architecture and Supabase backend.
+            </p>
+
+            <div class="project-tech">
+              <span class="tech-badge">React Native</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">Expo</span>
+              <span class="tech-badge">Supabase</span>
+              <span class="tech-badge">Zustand</span>
+              <span class="tech-badge">NativeWind</span>
+              <span class="tech-badge">Reanimated</span>
+              <span class="tech-badge">Expo Router</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://onelink.to/gxq9sd" target="_blank" class="btn project-btn">
+                <i class="fa-solid fa-mobile-screen-button"></i> View App
+              </a>
+              <a href="https://apps.apple.com/do/app/mi-iglesia-gestion-de-miembros/id6754183200?l=en-GB" target="_blank" class="btn project-btn">
+                <i class="fa-brands fa-apple"></i> App Store
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.mikaelburgos.miiglesia&hl=en" target="_blank" class="btn project-btn">
+                <i class="fa-brands fa-google-play"></i> Google Play
+              </a>
             </div>
           </div>
-          
         </div>
       </section>
 
-      <section class="contact adjust">
+      <section class="contact adjust" id="contact">
         <div class="title padd">
-          <p>Get In Touch</p>
-          <h2>Contact Me</h2>
+          <p>Let's Work Together</p>
+          <h2>Get In Touch</h2>
         </div>
 
-        <div class="contact-me" id="contact">
-          <div class="contact-info">
-            <i class="fa-solid fa-envelope"></i>
-            <p>mikaelburgos1997@gmail.com</p>
-            <div class="btn">
-              <a class="contact-btn" href="mailto:mikaelburgos1997@gmail.com">Send message</a>
+        <div class="contact-intro">
+          <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out through any of the channels below.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fa-solid fa-envelope"></i>
             </div>
+            <h3>Email</h3>
+            <p class="contact-detail">mikaelburgos1997@gmail.com</p>
+            <a class="contact-link" href="mailto:mikaelburgos1997@gmail.com">
+              Send Email <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
 
-          <div class="contact-info">
-            <i class="fa-brands fa-whatsapp"></i>
-            <p>WhatsApp</p>
-            <div class="btn">
-              <a class="contact-btn" target="_blank" href="https://wa.me/message/2JYTTAXYX5EOL1">Send message</a>
+          <div class="contact-card">
+            <div class="contact-icon whatsapp">
+              <i class="fa-brands fa-whatsapp"></i>
             </div>
+            <h3>WhatsApp</h3>
+            <p class="contact-detail">Message me anytime</p>
+            <a class="contact-link" target="_blank" href="https://wa.me/message/2JYTTAXYX5EOL1">
+              Send Message <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
 
-          <div class="contact-info">
-            <i class="fa-solid fa-phone"></i>
-            <p>+1-829-263-7884</p>
-            <div class="btn">
-              <a class="contact-btn" target="_blank" href="https://wa.me/message/2JYTTAXYX5EOL1">Call me</a>
+          <div class="contact-card">
+            <div class="contact-icon linkedin">
+              <i class="fa-brands fa-linkedin-in"></i>
             </div>
+            <h3>LinkedIn</h3>
+            <p class="contact-detail">Let's connect professionally</p>
+            <a class="contact-link" target="_blank" href="https://www.linkedin.com/in/mikael-burgos-627016130/">
+              View Profile <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
 
+        <div class="social-links-section">
+          <p class="social-title">Or find me on</p>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/mikael-burgos-627016130/" target="_blank" class="social-icon" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/mikaelburgos97" target="_blank" class="social-icon" title="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://instagram.com/just_mikaelb?igshid=ZDdkNTZiNTM=" target="_blank" class="social-icon" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com/MikaelBurgos?t=zUdko7aKMvtZAoSZKes3ww&s=09" target="_blank" class="social-icon" title="Twitter">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
           </div>
         </div>
       </section>
