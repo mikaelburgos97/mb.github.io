@@ -396,10 +396,15 @@ canvas.addEventListener('mouseleave', () => {
 });
 
 // Touch events for mobile
+let touchStartY = 0;
+let lastTouchY = 0;
+
 canvas.addEventListener('touchstart', (e) => {
   isDragging = true;
   const touch = e.touches[0];
   previousMousePosition = { x: touch.clientX, y: touch.clientY };
+  touchStartY = touch.clientY;
+  lastTouchY = touch.clientY;
   e.preventDefault();
 }, { passive: false });
 
@@ -413,6 +418,41 @@ canvas.addEventListener('touchmove', (e) => {
     rotation.x += deltaY * 0.003;
     targetRotation.y = rotation.y;
     targetRotation.x = rotation.x;
+
+    // Update scroll accumulator for progress bar (only vertical movement)
+    const touchDeltaY = lastTouchY - touch.clientY;
+    lastTouchY = touch.clientY;
+
+    // Only update progress if we're swiping down (positive delta)
+    if (touchDeltaY > 0) {
+      scrollAccumulator += touchDeltaY * 2;
+      scrollAccumulator = Math.max(0, Math.min(scrollAccumulator, maxScroll));
+
+      // Update progress bar
+      const progress = (scrollAccumulator / maxScroll) * 100;
+      scrollProgressBar.style.width = `${progress}%`;
+
+      // Show progress bar
+      scrollProgressContainer.classList.add('visible');
+
+      // Transition to next section when reaching max scroll
+      if (scrollAccumulator >= maxScroll && !isTransitioning) {
+        isTransitioning = true;
+        const aboutSection = document.querySelector('#about');
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+
+        // Reset after transition
+        setTimeout(() => {
+          scrollAccumulator = 0;
+          scrollProgressBar.style.width = '0%';
+          isTransitioning = false;
+          targetRotation.x = 0;
+          targetRotation.y = 0;
+          rotation.x = 0;
+          rotation.y = 0;
+        }, 1000);
+      }
+    }
 
     previousMousePosition = { x: touch.clientX, y: touch.clientY };
   }
