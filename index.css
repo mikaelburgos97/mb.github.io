@@ -82,7 +82,7 @@ body {
 
 .main {
   position: absolute;
-  width: calc(100% - 300px); 
+  width: calc(100% - 300px);
   left: 300px;
   background: var(--white);
   min-height: 33vh;
@@ -90,8 +90,8 @@ body {
 }
 
 .main.active{
-  width: calc(100% - 0px);
-  left: 0px ;
+  width: 100%;
+  left: 0px;
 }
 
 .main .topbar {
@@ -141,17 +141,53 @@ section {
 }
 
 .banner {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 20px;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--white);
+}
 
+.dark .banner {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #0f0f0f 100%);
+}
+
+#sphereCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  cursor: grab;
+  pointer-events: auto;
+}
+
+#sphereCanvas:active {
+  cursor: grabbing;
 }
 
 .banner .content{
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  z-index: 100;
+  text-align: center;
+  pointer-events: none;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.banner .content > * {
+  pointer-events: auto;
+  position: relative;
+  z-index: 100;
 }
 
 
@@ -160,9 +196,16 @@ section {
   position: relative;
   width: 300px;
   height: 300px;
-  overflow: hidden; 
+  overflow: hidden;
   border-radius: 50%;
   margin-bottom: 20px;
+  border: 5px solid #4a9eff;
+  box-shadow: 0 0 20px rgba(74, 158, 255, 0.3), 0 0 40px rgba(74, 158, 255, 0.2);
+  display: none; /* Hide HTML photo - now in 3D */
+}
+
+.dark .banner .imgBox {
+  box-shadow: 0 0 30px rgba(74, 158, 255, 0.5), 0 0 60px rgba(74, 158, 255, 0.3);
 }
 
 .banner .imgBox img {
@@ -181,10 +224,67 @@ h3 {
   color: var(--black);
   letter-spacing:2px ;
   text-transform: uppercase;
-  
+
 }
 p {
   color: #777;
+}
+
+.banner h3 {
+  color: var(--black);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 480px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 5px 15px;
+  border-radius: 8px;
+}
+
+.dark .banner h3 {
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  background: rgba(26, 26, 46, 0.9);
+}
+
+.job-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--black);
+  margin: 12px 0 8px 0;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 5px 15px;
+  border-radius: 8px;
+}
+
+.dark .job-title {
+  color: #fff;
+  background: rgba(26, 26, 46, 0.9);
+}
+
+.specializations {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 5px 15px;
+  border-radius: 8px;
+}
+
+.dark .specializations {
+  color: #b0b0b0;
+  background: rgba(26, 26, 46, 0.9);
+}
+
+.cta-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 270px;
+  margin: 0 auto;
 }
 
 .btn {
@@ -196,38 +296,99 @@ p {
   font-weight: 400;
   letter-spacing: 1px;
   margin-top: 10px;
-  text-decoration: none; 
-
+  text-decoration: none;
 }
 
-.socialMedia {
-  position: absolute;
-  bottom: 20px;
+.banner .btn {
+  background: #4a9eff;
+  color: #fff;
+  border: 2px solid #4a9eff;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  padding: 12px 35px;
+  position: relative;
+  z-index: 100;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.banner .btn:hover {
+  background: #3d8de6;
+  color: #fff;
+  border: 2px solid #3d8de6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.4);
+}
+
+.dark .banner .btn:hover {
+  color: #fff;
+  background: #3d8de6;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.banner .socialMedia {
+  position: relative;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  z-index: 100;
+  width: 100%;
+  gap: 0;
+  padding: 0;
 }
 
 .socialMedia li {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .socialMedia li a {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.05);
-  margin: 5px;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin: 0;
   text-decoration: none;
   color: var(--black);
   font-size: 1.2rem;
-
 }
 
 .socialMedia li a:hover {
-  background: var(--black2);  
+  background: var(--black2);
   color: #fff;
+}
+
+.banner .socialMedia li a {
+  background: #6c757d;
+  color: #fff;
+  border: 2px solid #6c757d;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 100;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dark .banner .socialMedia li a {
+  background: #6c757d;
+  color: #fff;
+  border: 2px solid #6c757d;
+}
+
+.banner .socialMedia li a:hover {
+  background: #5a6268;
+  color: #fff;
+  border: 2px solid #5a6268;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4);
 }  
 
 .adjust {
@@ -314,7 +475,7 @@ li {
 }
 
 i {
-  margin-right: 10px;
+  /* margin-right: 10px; */
   width: 1.5em;
 }
 
@@ -492,23 +653,70 @@ i {
   }
 
   .main .topbar {
-    left: 0;
-    width: 100%;
+    left: 0 !important;
+    width: 100% !important;
     padding: 0 20px;
+  }
+
+  .main .topbar.active {
+    left: 0 !important;
+    width: 100% !important;
   }
 
   .navigation ul {
     padding: 20px 20px;
   }
 
-  .banner .imgBox {
-    width: 250px;
-    height: 250px ;
+  .banner {
+    min-height: 100vh;
   }
 
-  .banner h3,
+  .banner .imgBox {
+    width: 200px;
+    height: 200px;
+    border: 4px solid #4a9eff;
+  }
+
+  .banner h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 380px;
+    padding: 5px 12px;
+  }
+
   .banner p {
     text-align: center;
+  }
+
+  .job-title {
+    font-size: 1rem;
+    margin: 10px 0 6px 0;
+    padding: 4px 12px;
+  }
+
+  .specializations {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    padding: 4px 12px;
+  }
+
+  .banner .btn {
+    padding: 10px 25px;
+    font-size: 0.95rem;
+  }
+
+  .banner .socialMedia {
+    gap: 10px;
+  }
+
+  .banner .socialMedia li a {
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+
+  .banner .content {
+    max-width: 90%;
   }
 
   .adjust {
