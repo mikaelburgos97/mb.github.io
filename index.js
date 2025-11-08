@@ -64,7 +64,6 @@ const technologies = [
   { name: 'Docker', icon: 'devicon-docker-plain', color: '#2496ED' },
   { name: 'Azure', icon: 'devicon-azure-plain', color: '#0078D4' },
   { name: 'Google Cloud', icon: 'devicon-googlecloud-plain', color: '#4285F4' },
-  { name: 'AWS', icon: 'devicon-amazonwebservices-plain-wordmark', color: '#FF9900' },
   { name: 'Salesforce', icon: 'devicon-salesforce-plain', color: '#00A1E0' },
   { name: 'NPM', icon: 'devicon-npm-original-wordmark', color: '#CB3837' },
   { name: 'Three.js', icon: 'devicon-threejs-original', color: '#000000' },
