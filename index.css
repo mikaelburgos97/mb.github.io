@@ -980,7 +980,8 @@ p {
     width: 40px !important;
     height: 40px !important;
     z-index: 10001;
-    margin: 10px 40px 20px 40px !important;
+    margin: 15px 0 20px 30px !important;
+    align-self: flex-start;
   }
 
   .themeSwitch::after {
